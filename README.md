@@ -6,7 +6,17 @@ This is a template for ansible roles
 
 ## Requirements
 
-## Role Variables
+## Example playbook
+
+```` yaml
+- hosts: all
+  become: yes
+
+  roles:
+  - template
+````
+
+## Role variables
 
 None of the variables below are required.
 
