@@ -1,6 +1,6 @@
 # My ansible role template
 
-[![Build Status](https://travis-ci.org/morbidick/ansible-role-base.svg?branch=master)](https://travis-ci.org/morbidick/ansible-role-base)
+[![Build Status](https://travis-ci.org/morbidick/ansible-role-template.svg?branch=master)](https://travis-ci.org/morbidick/ansible-role-template)
 
 This is a template for ansible roles
 
