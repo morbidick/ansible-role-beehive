@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: morbidick
+  description: Plain template for anible roles
+  license: MIT
+  min_ansible_version: 2.2
+
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+
+  categories:
+  - template
+
+dependencies: []
