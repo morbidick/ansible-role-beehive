@@ -14,6 +14,8 @@ None of the variables below are required.
 | :---                     | :---      | :--- |
 | `role_production_ready`  | `false`   | Basic demo entry |
 
+For all options see [defaults/main.yml](defaults/main.yml)
+
 ## Development
 
 You can use the Vagrantfile for local testing, just install vagrant and virtualbox and execute the following commands:
