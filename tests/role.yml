@@ -3,3 +3,9 @@
 
   roles:
     - role_under_test
+
+  # fix missing python2 for ubuntu newer then 15.10
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt update && sudo apt -y install python-simplejson
