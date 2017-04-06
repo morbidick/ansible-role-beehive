@@ -3,3 +3,6 @@
 
   roles:
     - role_under_test
+
+  vars:
+    beehive_bind_address: "0.0.0.0:8181"

@@ -1,1 +1,14 @@
 ---
+beehive_repo: github.com/muesli/beehive
+beehive_user: beehive
+beehive_install_go: yes
+beehive_go_package_name: golang
+beehive_path: "/opt/beehive"
+beehive_executable: "{{ beehive_path }}/bin/beehive"
+beehive_working_dir: "{{ beehive_path }}/src/{{ beehive_repo }}"
+beehive_enable_systemd: yes
+beehive_identifier: beehive
+beehive_systemd_unit_path: "/etc/systemd/system/{{ beehive_identifier }}.service"
+beehive_config_path: "/etc/beehive/beehive.conf"
+beehive_bind_address: "127.0.0.1:8181"
+beehive_canonicalurl: "http://localhost:8181"

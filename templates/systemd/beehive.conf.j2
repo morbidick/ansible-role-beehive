@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+
+[Service]
+WorkingDirectory={{ beehive_working_dir }}
+ExecStart={{ beehive_executable }} -bind {{ beehive_bind_address }} -canonicalurl {{ beehive_canonicalurl }} -config {{ beehive_config_path }}
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier={{ beehive_identifier }}
+User={{ beehive_user }}
+Group={{ beehive_user }}
+Environment=GOPATH={{ beehive_path }}
+
+[Install]
+WantedBy=multi-user.target

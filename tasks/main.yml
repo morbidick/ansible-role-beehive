@@ -1,1 +1,54 @@
 ---
+- name: update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  when: ansible_pkg_mgr == "apt"
+
+- name: create user
+  user:
+    name: "{{ beehive_user }}"
+
+- name: create beehive folder
+  file:
+    path: "{{ beehive_path }}"
+    state: directory
+    owner: "{{ beehive_user }}"
+    group: "{{ beehive_user }}"
+
+- name: create beehive config folder
+  file:
+    path: "{{ beehive_config_path | dirname }}"
+    state: directory
+    owner: "{{ beehive_user }}"
+    group: "root"
+
+- name: install go
+  package:
+    name: "{{ beehive_go_package_name }}"
+    state: present
+  when: beehive_install_go
+
+- name: go get beehive
+  shell: "go get -v {{ beehive_repo }}"
+  environment:
+    GOPATH: "{{ beehive_path }}"
+  become_user: "{{ beehive_user }}"
+  register: beehive_go_get
+  changed_when: beehive_go_get.stderr != ""
+
+- name: create systemd unit file
+  template:
+    dest: "{{ beehive_systemd_unit_path }}"
+    src: systemd/beehive.conf.j2
+    # validate: "systemd-analyze verify %s" # see https://github.com/ansible/ansible/issues/19232
+  notify:
+    - restart service
+  when: beehive_enable_systemd
+
+- name: enable systemd unit
+  service:
+    name: "{{ beehive_identifier }}"
+    enabled: yes
+    state: started
+  when: beehive_enable_systemd

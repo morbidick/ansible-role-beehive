@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: morbidick
-  description: Plain template for anible roles
+  description: Installs and configures beehive
   license: MIT
   min_ansible_version: 2.2
 
@@ -14,6 +14,7 @@ galaxy_info:
     - all
 
   categories:
-  - template
-
+  - beehive
+  - web
+  - automation
 dependencies: []

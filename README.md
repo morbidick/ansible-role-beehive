@@ -1,19 +1,25 @@
-# My ansible role template
+# Beehive Ansible role
 
-[![Build Status](https://travis-ci.org/morbidick/ansible-role-template.svg?branch=master)](https://travis-ci.org/morbidick/ansible-role-template)
+[![Build Status](https://travis-ci.org/morbidick/ansible-role-beehive.svg?branch=master)](https://travis-ci.org/morbidick/ansible-role-beehive)
 
-This is a template for ansible roles
+Installs and configures [beehive](https://github.com/muesli/beehive).
 
 ## Requirements
 
+None. For a production environment a authentication and ssl proxy should be added.
+
 ## Example playbook
 
-```` yaml
+````yaml
 - hosts: all
   become: yes
 
   roles:
-  - template
+  - beehive
+
+  vars:
+    beehive_canonicalurl: "http://beehive.example.net"
+    beehive_bind_address: "0.0.0.0:80"
 ````
 
 ## Role variables
@@ -21,14 +27,19 @@ This is a template for ansible roles
 None of the variables below are required.
 
 | Variable                 | Default   | Comment |
-| :---                     | :---      | :--- |
-| `role_production_ready`  | `false`   | Basic demo entry |
+| :---                     | :---      | :---    |
+| `beehive_canonicalurl`   | http://localhost:8181 | Canonical URL for the API & admin interface. |
+| `beehive_bind_address`   | localhost:8181 | Bind address for Beehive's API & admin interface. |
+| `beehive_install_go`     | `yes`     | Set to `no` if you're installing go manually or with another role. |
+| `beehive_path`           | `/opt/beehive` | Where to download beehive to. |
+| `beehive_config_path`    | `/etc/beehive/beehive.conf` | The beehive config file path. |
+| `beehive_enable_systemd` | `yes`     | Create systemd unit file and activate. |
 
 For all options see [defaults/main.yml](defaults/main.yml)
 
 ## Development
 
-You can use the Vagrantfile for local testing, just install vagrant and virtualbox and execute the following commands:
+You can use the [Vagrantfile](Vagrantfile) for local testing, just install vagrant and virtualbox and execute the following commands:
 
 ````bash
 vagrant up
