@@ -11,6 +11,9 @@ install:
   # Install Ansible
   - pip install ansible
 
+  # Install systemd required for the service file
+  - sudo apt-get install systemd -qq
+
 script:
   # Basic role syntax check
   - ansible-playbook tests/role.yml --syntax-check
