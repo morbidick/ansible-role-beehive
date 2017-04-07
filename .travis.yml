@@ -1,8 +1,7 @@
 ---
+dist: trusty
 sudo: required
 language: python
-python: "2.7"
-
 
 before_install:
   - sudo apt-get update -qq
@@ -17,11 +16,11 @@ script:
   - ansible-playbook tests/role.yml --syntax-check
 
   # Run the role/playbook with ansible-playbook.
-  - ansible-playbook -i "localhost," tests/role.yml --connection="local" --become
+  - ansible-playbook -i "localhost," tests/role.yml --connection="local" --become --extra-vars="@tests/travis_extra_vars.json"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
-    ansible-playbook -i "localhost," tests/role.yml --connection=local --become
+    ansible-playbook -i "localhost," tests/role.yml --connection=local --become --extra-vars="@tests/travis_extra_vars.json"
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
