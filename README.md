@@ -6,7 +6,7 @@ Installs and configures [beehive](https://github.com/muesli/beehive).
 
 ## Requirements
 
-None. For a production environment a authentication and ssl proxy should be added.
+None. For a production environment an authentication and ssl proxy should be added.
 
 ## Example playbook
 
