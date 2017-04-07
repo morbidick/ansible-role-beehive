@@ -30,9 +30,10 @@
   when: beehive_install_go
 
 - name: go get beehive
-  shell: "go get -v {{ beehive_repo }}"
+  shell: "go get -v {{ beehive_repo | quote }}"
   environment:
     GOPATH: "{{ beehive_path }}"
+  become: yes
   become_user: "{{ beehive_user }}"
   register: beehive_go_get
   changed_when: beehive_go_get.stderr != ""
