@@ -1,5 +1,5 @@
 ---
-- name: restart service
+- name: restart beehive
   systemd:
     daemon_reload: yes
     name: "{{ beehive_identifier }}"

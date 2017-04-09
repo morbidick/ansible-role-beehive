@@ -37,6 +37,8 @@
   become_user: "{{ beehive_user }}"
   register: beehive_go_get
   changed_when: beehive_go_get.stderr != ""
+  notify:
+    - restart beehive
 
 - name: create systemd unit file
   template:
@@ -44,7 +46,7 @@
     src: systemd/beehive.conf.j2
     # validate: "systemd-analyze verify %s" # see https://github.com/ansible/ansible/issues/19232
   notify:
-    - restart service
+    - restart beehive
   when: beehive_enable_systemd
 
 - name: enable systemd unit
