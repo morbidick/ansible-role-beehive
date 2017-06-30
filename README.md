@@ -37,14 +37,13 @@ None of the variables below are required.
 
 For all options see [defaults/main.yml](defaults/main.yml)
 
-## Development
+## Demo/Development
 
-You can use the [Vagrantfile](Vagrantfile) for local testing, just install vagrant and virtualbox and execute the following commands:
+You can use the [Vagrantfile](Vagrantfile) for local testing, just install vagrant and virtualbox.
 
-````bash
-vagrant up
-vagrant provision
-````
+* run `vagrant up`
+* open your browser at [127.0.0.1:8181](http://127.0.0.1:8181)
+* to reprovision run `vagrant provision`
 
 ## License
 
